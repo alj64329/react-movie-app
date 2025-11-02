@@ -1,11 +1,13 @@
 {
-  "name": "movie-app",
+  "name": "react-movie-app",
+  "homepage":"https://https://alj64329.github.io/react-movie-app/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy":"gh-pages -d docs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
