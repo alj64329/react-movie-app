@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import "tailwindcss";
+
+@theme{
+    --color-midnight:#202025;
+    --color-lightBlue:#CECFF1;
+}
+
+body{
+    color: #f0f0fa;
+    background-color: var(--color-midnight);
+}
+
+button{
+    cursor: pointer;
+}
+
+input:focus{
+    border: none;
+    outline: none;
+}
+::-webkit-scrollbar{
+  display: none;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.hero-cover{
+    max-height: 450px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.overlay-mask{
+    mask-image: linear-gradient(to top,transparent 5% ,black 100% );
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+}
+
+body{
+    font-family:"Open Sans", sans-serif;
+}
+
+.heading-font{
+    font-family: "Bebas Neue", sans-serif;
+}
+
+.years input[type=number]:focus{
+    border: none;
+}
+
+input[type=checkbox].genre-input{
+    position: absolute;
+    opacity: 0;
+    pointer-events: none
+}
+
+input[type=checkbox].genre-input+label:hover{
+    box-shadow: -2px 5px 5px rgba(206,207,241,0.3);
+
+}
+
+input[type=checkbox].genre-input:checked+label{
+    background-color: var(--color-lightBlue);
+    color: var(--color-midnight);
+    border: none;
+}
+
+input.btn-get:hover{
+    text-decoration: underline;
+}
+
+
+@layer components{
+    .border-btn-center{
+        @apply border rounded-2xl p-2 flex justify-center gap-2 items-center;
+    }
+
+    .swtich-btn{
+        @apply cursor-pointer pl-[0.8rem] underline;
+    }
+    .error-msg{
+        @apply p-[0.8rem] bg-[rgba(255,0,0,0.2)] text-sm rounded-xl;
+    }
+
+    .picks-border{
+        @apply flex flex-col items-center sm:flex-row gap-[2rem] md:gap-[3rem] justify-center lg:border lg:w-fit p-[2rem] rounded-3xl mx-auto;
+    }
+}
