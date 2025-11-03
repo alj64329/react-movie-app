@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route }from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, HashRouter }from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import Navbar from './components/Navbar'
 import SearchPage from './pages/SearchPage'
@@ -18,14 +18,14 @@ const App = () => {
       <Router>
         <div className='max-w-[1800px] mx-auto bg-[#202025]'>
         <Navbar/>
-          <Routes>
-            <Route path="/" element={<HomePage />}/>
-            <Route path="/search" element={<SearchPage/>}/>
-            <Route path="/watchlist" element={<WatchLaterPage/>}/>
-            <Route path="/browse" element={<BrowsePage/>}/>
-            <Route path="/movie/:id" element={<MovieDetail/>}/>
-            <Route path="/random" element={<RandomPickPage/>}/>
-          </Routes>
+            <Routes>
+              <Route path="/" element={<HomePage />}/>
+              <Route path="/search" element={<SearchPage/>}/>
+              <Route path="/watchlist" element={<WatchLaterPage/>}/>
+              <Route path="/browse" element={<BrowsePage/>}/>
+              <Route path="/movie/:id" element={<MovieDetail/>}/>
+              <Route path="/random" element={<RandomPickPage/>}/>
+            </Routes>
         <Footer/>
         </div>
       </Router>
