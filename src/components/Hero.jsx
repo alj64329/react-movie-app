@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import { genres } from '../constant/genre'
 import { useNavigate } from 'react-router-dom'
@@ -9,6 +9,7 @@ const Hero = (props) => {
     const index = Math.floor(Math.random()*props.movies.length)
     const path = props.movies[index].backdrop_path
     const movie = props.movies[index]
+    const [isHover, setIsHover]=useState(false)
     const navigate = useNavigate()
 
     const genreIds = genres["genres"].filter((genre)=>movie.genre_ids.includes(genre["id"]))
@@ -18,7 +19,9 @@ const Hero = (props) => {
   return (
 
         <div className='relative pt-[2rem] md:pt-0'
-         onClick={()=>navigate(`/movie/${movie.id}`,{state:{movie}})}>
+         onClick={()=>navigate(`/movie/${movie.id}`,{state:{movie}})}
+         onMouseEnter={()=>setIsHover(true)}
+         onMouseLeave={()=>setIsHover(false)}>
             {path?
             <img
             src={`${imgBase}${path}`} 
@@ -36,7 +39,7 @@ const Hero = (props) => {
                             <span key={index} >{item}{index!== genreNames.length-1?"/":""}</span>)}
                         </div>
                     </div>
-                    <div className='hidden md:block'>{movie.overview}</div>
+                    {isHover&&<div className='hidden md:block'>{movie.overview}</div>}
                     <div></div>
                 </div>
             </div>
