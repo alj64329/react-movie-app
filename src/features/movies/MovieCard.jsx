@@ -15,7 +15,9 @@ const MovieCard = (props) => {
   const [isBookmarked, setIsBookmarked] = useState(false)
   const isWatchList = props.isWatchList
   const movie = props.movie
-   const navigate = useNavigate()
+  const navigate = useNavigate()
+  console.log(movie)
+
 
     const remove = ()=>{
       removeWatchList(movie.$id)

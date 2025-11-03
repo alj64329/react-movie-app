@@ -8,12 +8,16 @@ import useFetchVideo from '../hooks/useFetchVideo'
 import { addWatchList, isInWatchList, removeWatchList } from '../features/watchlist/watchList'
 import { UserContext } from '../context/UserContext'
 import useFetchMovieById from '../hooks/useFetchMovieById'
+import ErrorModal from '../components/ErrorModal'
+import SimilarMovies from '../features/movies/SimilarMovies'
 
 const MovieDetail = () => {
     //If the movie page is redirect from watchlist, then movie does not have all detail
     const {loggedInUser, watchList} = useContext(UserContext)
     const [isVideoOpen, setVidewatchListoOpen] = useState(false)
     const [isBookmarked, setIsBookmarked] =useState(false)
+    const [isMsgModalOpen, setIsMsgModalOpen]= useState(false)
+    const [message, setMessage] = useState("")
     const {id} = useParams()
     const {state} = useLocation()
     const movie = state.movie
@@ -34,6 +38,11 @@ const MovieDetail = () => {
     },[watchList])
 
     const bookmarkFn = ()=>{
+        if(!loggedInUser){
+            setMessage("This feature is limited to the logged-in users only.\nPlease log in or sign in.")
+            setIsMsgModalOpen(true)
+            return
+        }
         setIsBookmarked(!isBookmarked)
         addWatchList(loggedInUser,movie)
     }
@@ -52,7 +61,7 @@ const MovieDetail = () => {
         <div className='flex gap-[3rem] md:gap-[5rem] justify-center'>
             <div>
                 <img src={`${imgBase}${movie.poster_path}`} 
-                className='w-[150px] md:w-[250px]'/>
+                className='w-[150px] sm:w-[250px] md:w-[300px]'/>
             </div>
             <div className='max-w-[50%] flex flex-col justify-between'>
                 <div className='flex flex-col gap-[0.5rem]'>
@@ -65,8 +74,9 @@ const MovieDetail = () => {
                 </div>
                 <div className='flex flex-col lg:flex-row gap-3 text-sm md:text-md font-bold'>
                     {video&&
-                    <div className='border-btn-center' onClick={()=>setVidewatchListoOpen(true)}>
+                    <div className='border-btn-center cursor-pointer' onClick={()=>setVidewatchListoOpen(true)}>
                         <span>Watch Trailer </span><FontAwesomeIcon icon={faPlay}/></div>}
+                    
                     <div className='border-btn-center cursor-pointer'>
                     {!isBookmarked?
                         <div onClick={()=>bookmarkFn()}>
@@ -75,6 +85,7 @@ const MovieDetail = () => {
                             </span><FontAwesomeIcon icon={faPlus}/></div>:
                         <div onClick={()=>removeBookmark()}>Remove from Watchlist</div>}
                     </div>
+
                 </div>
             </div>
         </div>
@@ -82,8 +93,14 @@ const MovieDetail = () => {
             <span className='font-bold pr-[0.8rem]'>Overview:</span>
             {movie.overview}
         </div>
+        <div className='pt-[2rem] px-[2rem] md:px-[8rem]'>
+            <SimilarMovies movieId={movie.id}/>
+        </div>
+        {/* Guest user to let know add to watchlist is for log-in users*/}
+        {isMsgModalOpen&&<ErrorModal isOpen={isMsgModalOpen} onClose={()=>setIsMsgModalOpen(false)} message={message}/>}
         {/* video Modal */}
-        {isVideoOpen&&<VideoModal isOpen={isVideoOpen} onClose={()=>setVidewatchListoOpen()} video={video}/>}
+        {isVideoOpen&&<VideoModal isOpen={isVideoOpen} onClose={()=>setVidewatchListoOpen(false)} video={video}/>}
+        
         
     </div>
   )

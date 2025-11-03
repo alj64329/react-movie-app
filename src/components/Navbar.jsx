@@ -78,7 +78,7 @@ const Navbar = () => {
                 </div>
                 <div>
                     <FontAwesomeIcon icon={faUser} onClick={()=>setIsModalOpen(true)} className='cursor-pointer' />
-                    {loggedInUser?<div className='text-sm'>Hello, {loggedInUser.name}</div>:""}
+                    <div className='text-sm'>Hello, {loggedInUser?loggedInUser.name:"Guest"}</div>
                 </div>
                 {isModalOpen&&<Modal isOpen={isModalOpen} onClose={()=>setIsModalOpen(false)}/>}
             </div>

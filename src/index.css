@@ -74,6 +74,10 @@ input.btn-get:hover{
     text-decoration: underline;
 }
 
+.similar-movies img{
+    width: 120px;
+}
+
 
 @layer components{
     .border-btn-center{

@@ -9,14 +9,20 @@ const VideoModal = (props) => {
     
   return (
     <div className="fixed inset-0 bg-[rgba(0,0,0,0.8)] bg-opacity-20 flex items-center justify-center z-50">
-      <div className="bg-gray-900 text-white rounded-2xl p-8 w-full max-w-md relative">
-        <button
-          className="absolute top-3 right-3 text-gray-400 hover:text-white"
-          onClick ={onClose}
-        >✕</button>
+      <div className="bg-gray-900 text-white rounded-2xl w-full max-w-3xl relative p-4">
+        <div className='flex justify-end px-1 pb-[0.4rem] md:pb-[1rem]'>
+          <button
+            className="text-gray-400 hover:text-white md:text-xl"
+            onClick ={onClose}
+          >✕
+          </button>
+        </div>
 
-        <div className='h-[100%]'>
-          <iframe src={youtubeUrl} width={'100%'} height={'100%'} allowFullScreen></iframe>
+        <div className="w-full aspect-video overflow-hidden">
+          <iframe 
+            src={youtubeUrl}  
+            className='w-full h-full'
+            allowFullScreen></iframe>
         </div>
 
 

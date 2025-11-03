@@ -71,7 +71,8 @@ const HomePage = () => {
 
         <GridDisplay title={"Trending"} query={"trending/movie/day"}/>
         <GridDisplay title={"Top rated"} query={"movie/top_rated"}/>
-        {watchListSize>0&&<GridDisplay title={"Similar to your watchlist"} 
+        {watchListSize>0&&
+        <GridDisplay title={"Similar to your watchlist"} 
         query={end}/>}
       </section>
 

@@ -40,12 +40,12 @@ import { imgBase } from '../constant/constant'
       src={`${imgBase}${movie.backdrop_path}`} 
       className='max-w-[280px] rounded-md'
       style={{filter: isHovered? 'grayscale(70%)': 'grayscale(0)'}}/>
-      <div className='absolute top-[15px] right-[20px] text-white'
+      {loggedInUser&&<div className='absolute top-[15px] right-[20px] text-white'
       style={{display:isHovered?'block':'none'}}
       onClick={()=>bookmarkFn()}>
         {isBookmarked?
         <FontAwesomeIcon icon={faBookmarkSolid} className='text-xl' />:<FontAwesomeIcon icon={faBookmarkRegular} className='text-xl'/>}
-      </div>
+      </div>}
       <div 
       className='absolute w-[200px] h-[150px] cursor-pointer left-1/2 -translate-x-1/2 top-0'
       onClick={()=>navigate(`/movie/${movie.id}`,{state:{movie}})}>
