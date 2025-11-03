@@ -78,6 +78,33 @@ input.btn-get:hover{
     width: 120px;
 }
 
+.slide{
+    display: none;
+}
+
+.slide.active{
+    display: block;
+    animation: fade 1s ease-in-out;
+}
+
+.dot {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  margin: 0 4px;
+  background-color: #e4e3e3;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.dot.active {
+  background-color: #5a5a5a;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
 
 @layer components{
     .border-btn-center{
