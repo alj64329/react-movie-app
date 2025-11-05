@@ -1,9 +1,10 @@
 import { faBars, faMagnifyingGlass, faUser, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useState } from 'react'
 import Modal from './Modal'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
+import logo from '../assets/logo.png'
 
 const Navbar = () => {
     const {loggedInUser, setLoggedInUser} = useContext(UserContext)
@@ -39,7 +40,7 @@ const Navbar = () => {
                 </div>   
                 <div className='logo'>
                     <a href="/">
-                        <img src="src\assets\logo.png" 
+                        <img src={logo}
                         alt="Logo" 
                         width={"60px"}/>
                     </a>
