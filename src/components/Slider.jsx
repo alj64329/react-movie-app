@@ -25,7 +25,7 @@ const Slider = ({movie}) => {
         <div className='absolute text-white bottom-[25%] right-[50%] translate-x-[50%]'>
             <div className='md:w-max-[500px] flex flex-col items-center cursor-pointer'
             onClick={()=>navigate(`/movie/${movie.id}`,{state:{movie}})}>
-                <h3 className='text-3xl font-bold'>{movie.title}</h3>
+                <h3 className='text-lg sm:text-3xl font-bold'>{movie.title}</h3>
                 <div className='flex gap-3'>
                     <div>{movie.release_date.slice(0,4)}</div>
                     <div>

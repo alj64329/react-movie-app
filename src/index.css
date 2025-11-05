@@ -100,6 +100,7 @@ input.btn-get:hover{
   background-color: #5a5a5a;
 }
 
+
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
@@ -120,5 +121,9 @@ input.btn-get:hover{
 
     .picks-border{
         @apply flex flex-col items-center sm:flex-row gap-[2rem] md:gap-[3rem] justify-center lg:border lg:w-fit p-[2rem] rounded-3xl mx-auto;
+    }
+
+    .auth-btn{
+        @apply border w-fit px-[2rem] py-[0.5rem] rounded-2xl mx-auto font-bold hover:text-midnight hover:bg-white;
     }
 }

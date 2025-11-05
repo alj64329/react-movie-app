@@ -56,10 +56,10 @@ const MovieDetail = () => {
 
 
   return (
-    <div className="pt-[4rem] py-[2rem] px-[1rem] max-w-[1800px]">
+    <div className="pt-[4rem] py-[2rem] px-[2rem] max-w-[1800px]">
 
-        <div className='flex gap-[3rem] md:gap-[5rem] justify-center'>
-            <div>
+        <div className='flex gap-[2rem] sm:gap-[5rem] justify-center'>
+            <div className='flex items-center'>
                 <img src={`${imgBase}${movie.poster_path}`} 
                 className='w-[150px] sm:w-[250px] md:w-[300px]'/>
             </div>
@@ -72,7 +72,7 @@ const MovieDetail = () => {
                     <div>{genreNames.map((item, index)=>
                         <span key={index} >{item}{index!== genreNames.length-1?" /":""}</span>)}</div>
                 </div>
-                <div className='flex flex-col lg:flex-row gap-3 text-sm md:text-md font-bold'>
+                <div className='flex flex-col lg:flex-row gap-3 text-[12px] sm:text-md font-bold pt-[0.8rem]'>
                     {video&&
                     <div className='border-btn-center cursor-pointer' onClick={()=>setVidewatchListoOpen(true)}>
                         <span>Watch Trailer </span><FontAwesomeIcon icon={faPlay}/></div>}

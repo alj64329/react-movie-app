@@ -16,8 +16,6 @@ const MovieCard = (props) => {
   const isWatchList = props.isWatchList
   const movie = props.movie
   const navigate = useNavigate()
-  console.log(movie)
-
 
     const remove = ()=>{
       removeWatchList(movie.$id)
@@ -41,21 +39,22 @@ const MovieCard = (props) => {
     }
 
   return (
-    // Watch it later movie card
     <div key={movie.id} className="p-[1rem] relative"
             onMouseEnter={()=>setIsHovered(true)}
             onMouseLeave={()=>setIsHovered(false)}>
               <img src={`${imgBase}${isWatchList?movie.posterPath:movie.poster_path}`} 
-              className={`min-w-[120px] max-w-[150px] md:max-w-[180px] rounded-lg ${!isWatchList&&'cursor-pointer'}`}
+              className={`min-w-[120px] max-w-[150px] md:max-w-[170px] rounded-lg ${!isWatchList&&'cursor-pointer'}`}
               onClick={!isWatchList? ()=>navigate(`/movie/${movie.id}`,{state:{movie:movie}}):undefined}
               style={{filter: isHovered? 'grayscale(75%)': 'grayscale(0)'}}/>
 
               {(isHovered&&isWatchList)&&
               <div
-              className='h-[80px] w-[50px] bg-[#F1F1F1] absolute top-0 right-0 rounded-2xl flex flex-col items-center p-[1rem] gap-[0.8rem]'>
+              className='h-[50px] w-[50px] bg-[#F1F1F1] absolute top-0 right-[10%] md:right-[-10%] rounded-2xl flex flex-col items-center p-[1rem] gap-[0.8rem]'>
               <FontAwesomeIcon icon={faTrash} style={{color: '#000000',cursor:'pointer'}}
               onClick={()=>remove()}/>
-              <FontAwesomeIcon icon={faThumbsUp} style={{color: '#D4D165',cursor:'pointer'}}/>
+              {/* Liked icon */}
+              {/* <FontAwesomeIcon icon={faThumbsUp} 
+              style={{color: '#D4D165',cursor:'pointer'}}/> */}
               </div>}
             {!isWatchList&&<div className='absolute top-[10%] right-[15%] text-white'
               style={{display:isHovered?'block':'none'}}

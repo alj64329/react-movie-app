@@ -1,13 +1,13 @@
 {
   "name": "react-movie-app",
-  "homepage":"https://https://alj64329.github.io/react-movie-app/",
+  "homepage": "https://https://alj64329.github.io/react-movie-app/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy":"gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -19,6 +19,7 @@
     "@gsap/react": "^2.1.2",
     "@tailwindcss/vite": "^4.1.13",
     "appwrite": "^21.0.0",
+    "lightingcss": "^0.1.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-multi-carousel": "^2.8.6",

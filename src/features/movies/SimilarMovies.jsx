@@ -7,7 +7,6 @@ const SimilarMovies = (props) => {
 
     const query = `movie/${movieId}/similar`
     const {movieList:movies, isLoading, errorMessage} = useFetchMovies(query)
-    console.log(movies.length)
 
   return (
     <div>
@@ -19,7 +18,9 @@ const SimilarMovies = (props) => {
         <div 
         className='flex gap-[1rem] overflow-x-auto similar-movies'>
             {movies.length>0&&movies.map(movie=>(
-                <MovieCard isWatchlist={false} movie={movie}/>
+                <div key={movie.id}>
+                    <MovieCard isWatchlist={false} movie={movie}/>
+                </div>
             ))   
             }
         </div>

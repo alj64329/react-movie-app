@@ -31,7 +31,7 @@ export const MovieByCategory = (props) => {
           }
         </div>
       </div>
-      <div className="py-[2rem] flex justify-between">
+      <div className="py-[2rem] flex justify-between max-w-[1200px] mx-auto">
         <button className={page===1?"text-[rgba(0,0,0,0.4)]":"cursor-pointer"} onClick={()=>setPage(page-1)}>Previous</button>
         <button className ="cursor-pointer" onClick={()=>setPage(page+1)}>Next</button>
       </div>

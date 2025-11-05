@@ -1,4 +1,4 @@
-import { faBars, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faMagnifyingGlass, faUser, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import Modal from './Modal'
@@ -31,17 +31,23 @@ const Navbar = () => {
     <header className='p-[1.2rem] md:p-[2rem] relative max-w-[1800px]'>
         <div className="flex justify-between items-center">
             <div className='flex gap-[1rem]'>
-                <div className='block lg:hidden'>
-                    <FontAwesomeIcon icon={faBars} onClick={()=>setIsMenuOpen(!isMenuOpen)}
-                        className='cursor-pointer'/>
+                <div className='lg:hidden flex items-center'>
+                    {!isMenuOpen?<FontAwesomeIcon icon={faBars} onClick={()=>setIsMenuOpen(!isMenuOpen)}
+                        className='cursor-pointer text-2xl'/>:
+                        <FontAwesomeIcon icon={faXmark} onClick={()=>setIsMenuOpen(false)} 
+                        className='cursor-pointer text-2xl'/>}
                 </div>   
                 <div className='logo'>
-                    MovieMatch
+                    <a href="/">
+                        <img src="src\assets\logo.png" 
+                        alt="Logo" 
+                        width={"60px"}/>
+                    </a>
                 </div>
             </div> 
              {/* Desktop */}
             <div className='hidden lg:block'>
-                <ul className='flex gap-[1rem]'>
+                <ul className='flex gap-[1rem] font-bold'>
                     <li><a href="/">Home</a></li>
                     <li><a href="/browse">Browse</a></li>
                     {loggedInUser?<li><a href="/watchlist">Watch Later</a></li>:""}
@@ -51,9 +57,9 @@ const Navbar = () => {
 
             {/* mobile */}
             {isMenuOpen&&
-            <div className='absolute bg-[#202025] top-[95%] left-0 z-100'
+            <div className='absolute bg-[#202025] top-[95%] left-0 z-40 w-[100vw] h-[90vh]'
             onMouseLeave={()=>setIsMenuOpen(false)}>
-                <ul className='flex flex-col gap-[1rem] p-[2rem]'>
+                <ul className='flex flex-col justify-center items-center gap-[1rem] pt-[7rem] p-[2rem] font-bold text-3xl'>
                     <li><a href="/">Home</a></li>
                     <li><a href="/browse">Browse</a></li>
                     {loggedInUser?<li><a href="/watchlist">Watch Later</a></li>:""}
@@ -76,7 +82,7 @@ const Navbar = () => {
                         <button onClick={()=>redirectResult()}>Search</button>
                     </div>
                 </div>
-                <div>
+                <div className='flex flex-col items-center'>
                     <FontAwesomeIcon icon={faUser} onClick={()=>setIsModalOpen(true)} className='cursor-pointer' />
                     <div className='text-sm'>Hello, {loggedInUser?loggedInUser.name:"Guest"}</div>
                 </div>
