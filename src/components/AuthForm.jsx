@@ -22,11 +22,6 @@ const AuthoForm = ({onClose, setUser}) => {
       return
     }
 
-    if(password.length<8){
-      setError("Password needs to be more than 8 characters")
-      return
-    }
-
     try{
       await account.createEmailPasswordSession({
         email,
@@ -40,6 +35,7 @@ const AuthoForm = ({onClose, setUser}) => {
     }catch(err){
       console.log("Login failed:", err)
       console.log(err.code)
+      setError("Incorrect email or password")
     }
   }
 
@@ -48,7 +44,7 @@ const AuthoForm = ({onClose, setUser}) => {
     e.preventDefault()
     setError("")
 
-    if(!email ||!password||!username){
+    if(!email.trim() ||!password.trim()||!username.trim()){
       setError("Please fill all boxes")
       return
     }
@@ -67,7 +63,7 @@ const AuthoForm = ({onClose, setUser}) => {
       console.log(err.code)
       //Confilict
       if(err.code){
-        setError("Email exisit, please log in")
+        setError("Email exisit, please log in or use other email to create an account")
         return
       }
 
